@@ -4,12 +4,12 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
 <meta name="format-detection" content="telephone=no">
 <meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-title" content="Amaris">
+<meta name="apple-mobile-web-app-title" content="Duitnya Amaris">
 <meta name="theme-color" content="#FFF8E7">
 <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2064%2064%22%3E%3Crect%20width%3D%2264%22%20height%3D%2264%22%20rx%3D%2218%22%20fill%3D%22%231A2340%22/%3E%3Crect%20x%3D%2219%22%20y%3D%2230%22%20width%3D%2226%22%20height%3D%2220%22%20rx%3D%226%22%20fill%3D%22%23FFF8E7%22/%3E%3Crect%20x%3D%2221%22%20y%3D%2247%22%20width%3D%225%22%20height%3D%228%22%20rx%3D%222.5%22%20fill%3D%22%23FFF8E7%22/%3E%3Crect%20x%3D%2238%22%20y%3D%2247%22%20width%3D%225%22%20height%3D%228%22%20rx%3D%222.5%22%20fill%3D%22%23FFF8E7%22/%3E%3Cpath%20d%3D%22M8%2033C21%2031%2027%2021%2032%208C37%2021%2043%2031%2056%2033Z%22%20fill%3D%22%23C6EA4F%22/%3E%3Ccircle%20cx%3D%2232%22%20cy%3D%2240.5%22%20r%3D%226.5%22%20fill%3D%22%23FF5A36%22/%3E%3Cpath%20d%3D%22M32%2044c-3.8-2.6-4.6-4.2-4.6-5.6a2.4%202.4%200%200%201%204.6-1%202.4%202.4%200%200%201%204.6%201c0%201.4-.8%203-4.6%205.6z%22%20fill%3D%22%23fff%22/%3E%3C/svg%3E">
 <link rel="manifest" href="manifest.json">
 <link rel="apple-touch-icon" href="icon-180.png">
-<title>Amaris</title>
+<title>Duitnya Amaris</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
 <style>
@@ -163,7 +163,7 @@ const I = {
   log: '<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>',
   cog: '<circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M19 5l-2 2M7 17l-2 2"/>'
 };
-const APP = 'Amaris';
+const APP = 'Duitnya Amaris';
 const BRAND = '<svg viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="18" fill="#1A2340"/><rect x="19" y="30" width="26" height="20" rx="6" fill="#FFF8E7"/><rect x="21" y="47" width="5" height="8" rx="2.5" fill="#FFF8E7"/><rect x="38" y="47" width="5" height="8" rx="2.5" fill="#FFF8E7"/><path d="M8 33C21 31 27 21 32 8C37 21 43 31 56 33Z" fill="#C6EA4F"/><circle cx="32" cy="40.5" r="6.5" fill="#FF5A36"/><path d="M32 44c-3.8-2.6-4.6-4.2-4.6-5.6a2.4 2.4 0 0 1 4.6-1 2.4 2.4 0 0 1 4.6 1c0 1.4-.8 3-4.6 5.6z" fill="#fff"/></svg>';
 const MASC = '<svg class="mc" viewBox="0 0 130 96" aria-hidden="true"><ellipse cx="65" cy="91" rx="40" ry="4" fill="#000" opacity=".2"/><rect x="40" y="78" width="9" height="13" rx="4" fill="#FFF8E7"/><rect x="81" y="78" width="9" height="13" rx="4" fill="#FFF8E7"/><rect x="30" y="46" width="70" height="38" rx="13" fill="#FFF8E7"/><path d="M10 52C34 48 48 32 65 6C82 32 96 48 120 52Z" fill="#C6EA4F"/><circle cx="65" cy="66" r="14" fill="#FF5A36"/><circle cx="60" cy="63" r="2" fill="#fff"/><circle cx="70" cy="63" r="2" fill="#fff"/><path d="M59 69q6 5 12 0" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round"/><circle cx="15" cy="26" r="7" fill="#FFD369"/><circle cx="15" cy="26" r="3.5" fill="none" stroke="#E0A92F" stroke-width="1.6"/><circle cx="115" cy="20" r="5.5" fill="#FFD369"/></svg>';
 const ML = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'];
@@ -250,7 +250,8 @@ function trend(a, f, e, days) {
     return `<rect x="${i * w + w * .08}" y="${100 - h1}" width="${w * .4}" height="${h1}" rx="2" fill="#0b7d57"/><rect x="${i * w + w * .5}" y="${100 - h2}" width="${w * .4}" height="${h2}" rx="2" fill="#c4243f"/>`;
   }).join('') + `<text x="0" y="111" font-size="9" fill="#3c3f4a">${K[0].slice(5)}</text><text x="300" y="111" font-size="9" fill="#3c3f4a" text-anchor="end">${K[K.length - 1].slice(5)}</text></svg>`;
 }
-const itm = x => `<div class="glass item" onclick="openForm('${x.t}','${x.id}')"><span class="tile">${em(x.kat)}</span><div style="flex:1;min-width:0"><b style="font-size:16px">${esc(x.kat)}</b><small>${x.tgl} · ${esc(x.met)} · ${em(x.kt)} ${esc(KS[x.kt] || x.kt)} · ${esc(x.oleh)}${x.cat ? ' · ' + esc(x.cat) : ''}</small></div><b class="${x.t == 'masuk' ? 'in' : 'out'}">${x.t == 'masuk' ? '+' : '−'}${rp(x.nom)}</b></div>`;
+const fdx = v => /^\d{4}-\d{2}-\d{2}$/.test(v) ? fd(v) : v;
+const itm = x => `<div class="glass item" onclick="openForm('${x.t}','${x.id}')"><span class="tile">${em(x.kat)}</span><div style="flex:1;min-width:0"><b style="font-size:16px">${esc(x.kat)}</b><small>${fdx(x.tgl)} · ${esc(x.met)} · ${em(x.kt)} ${esc(KS[x.kt] || x.kt)} · ${esc(x.oleh)}${x.cat ? ' · ' + esc(x.cat) : ''}</small></div><b class="${x.t == 'masuk' ? 'in' : 'out'}">${x.t == 'masuk' ? '+' : '−'}${rp(x.nom)}</b></div>`;
 const donut = (m, k) => { const c = 2 * Math.PI * 40, T = m + k || 1; return `<svg viewBox="0 0 100 100" width="124" height="124" style="flex:none"><circle cx="50" cy="50" r="40" fill="none" stroke="#c4243f" stroke-width="15"/><circle cx="50" cy="50" r="40" fill="none" stroke="#0b7d57" stroke-width="15" stroke-dasharray="${m / T * c} ${c}" transform="rotate(-90 50 50)"/></svg>`; };
 function eye() { localStorage.h = localStorage.h == '1' ? '0' : '1'; render(); }
 const PL = { hari: 'Hari ini', minggu: '7 hari terakhir', bulan: 'Bulan ini', custom: 'Custom' };
@@ -507,7 +508,7 @@ function kBody() {
   <h4 style="margin-top:14px">Pindahkan dana</h4><label style="margin-top:6px">Dari</label>${chipsOf('dari', K)}<label>Ke</label>${chipsOf('ke', K)}
   <input inputmode="numeric" placeholder="Rp 0" value="${K.nom}" oninput="this.value=dots(this.value);K.nom=this.value" style="margin-top:12px;font-size:26px;font-weight:700;text-align:center">
   <label>Catatan (opsional)</label><input value="${esc(K.cat)}" oninput="K.cat=this.value">
-  <h4 style="margin-top:18px">Aktivitas terbaru</h4>${ev.length ? ev.map(e => `<div class="between" style="align-items:center;padding:9px 0;border-bottom:1px solid var(--ln)"><span><span class="em">${e.e}</span> <b style="display:inline;font-size:15px">${esc(e.txt)}</b><br><small>${e.tgl} · ${esc(e.oleh)}</small></span><span><b class="${e.v > 0 ? 'in' : 'out'}" style="display:inline;font-size:15px">${e.v > 0 ? '+' : '−'}${rp(Math.abs(e.v))}</b>${e.t == 'pn' ? ` <button class="lnk" onclick="delP('${e.id}')" aria-label="Hapus">${ic('trash', 18)}</button>` : ''}</span></div>`).join('') : empty('Belum ada aktivitas di kantong ini.')}`,
+  <h4 style="margin-top:18px">Aktivitas terbaru</h4>${ev.length ? ev.map(e => `<div class="between" style="align-items:center;padding:9px 0;border-bottom:1px solid var(--ln)"><span><span class="em">${e.e}</span> <b style="display:inline;font-size:15px">${esc(e.txt)}</b><br><small>${fdx(e.tgl)} · ${esc(e.oleh)}</small></span><span><b class="${e.v > 0 ? 'in' : 'out'}" style="display:inline;font-size:15px">${e.v > 0 ? '+' : '−'}${rp(Math.abs(e.v))}</b>${e.t == 'pn' ? ` <button class="lnk" onclick="delP('${e.id}')" aria-label="Hapus">${ic('trash', 18)}</button>` : ''}</span></div>`).join('') : empty('Belum ada aktivitas di kantong ini.')}`,
   `<button class="btn" id="sv" onclick="saveK()">Pindahkan dana</button>`);
 }
 async function saveK() {
@@ -567,5 +568,7 @@ async function doAdj() {
   document.addEventListener('touchcancel', () => { on = false; hide(); });
 })();
 ['gesturestart', 'gesturechange', 'gestureend'].forEach(t => document.addEventListener(t, e => e.preventDefault()));
+/* data otomatis diperbarui saat aplikasi dibuka lagi (Amar & Risa mencatat dari HP masing-masing) */
+document.addEventListener('visibilitychange', () => { if (!document.hidden && S.data && !$('#v').dataset.pg) load(true); });
 boot();
 </script></body></html>
