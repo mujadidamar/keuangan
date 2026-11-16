@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="id"><head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<meta name="format-detection" content="telephone=no">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="Keuangan">
 <meta name="theme-color" content="#ffffff">
@@ -11,80 +12,76 @@
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
 <style>
-:root,[data-th=navy]{--a:#2f46c8;--ad:#1a2780;--al:#e0e7ff;--ab:#a5b4fc;--rgb:47,70,200;--g:linear-gradient(135deg,#1b2a8a,#3b5bdb 55%,#6c7bff);--gb:linear-gradient(135deg,#5b7cff,#2a3ab5);--bg:radial-gradient(circle at 0% 6%,rgba(56,189,248,.35),transparent 34%),radial-gradient(circle at 100% 20%,rgba(167,139,250,.38),transparent 36%),radial-gradient(circle at 10% 62%,rgba(253,224,71,.28),transparent 30%),linear-gradient(180deg,#dbe6ff 0,#eaf0ff 320px,#f4f7ff 640px) #f4f7ff;--tx:#10173a;--mu:#6f7aa3;--ln:#e0e6fa;--in:#12a874;--out:#ef4f74;--sh:0 10px 24px rgba(var(--rgb),.12),0 3px 0 var(--ln)}
-[data-th=pink]{--a:#e0457f;--ad:#c42f69;--al:#ffe3ee;--ab:#ffb0cb;--rgb:240,90,150;--g:linear-gradient(135deg,#ff6fa6,#f0488c 55%,#ff7f6e);--gb:linear-gradient(135deg,#ff8fb8,#e5407f);--bg:radial-gradient(circle at 0% 6%,rgba(255,200,87,.38),transparent 34%),radial-gradient(circle at 100% 20%,rgba(196,148,255,.34),transparent 36%),radial-gradient(circle at 10% 62%,rgba(125,211,252,.28),transparent 30%),linear-gradient(180deg,#ffdcec 0,#ffeaf3 320px,#fff6fa 640px) #fff6fa;--tx:#3a1d2b;--mu:#a2778c;--ln:#fbdfe9}
+:root,[data-th=navy]{--a:#2b3fb0;--p:#3d56dc;--ad:#16215f;--al:#e6ebff;--ab:#b8c3f5;--pt:#f4f6ff;--rgb:44,62,160;--g:linear-gradient(150deg,#16215f 0%,#2638a0 52%,#4a64e6 100%);--gb:linear-gradient(135deg,#4a64e6,#2638a0);--bg:linear-gradient(180deg,#e2e8ff 0,#f2f5ff 380px) #f2f5ff;--tx:#0f1638;--mu:#6b7499;--ln:#e3e8f8;--in:#0f9f6e;--okb:#e6f7f0;--out:#e04462;--nob:#fdeaee}
+[data-th=pink]{--a:#c93c78;--p:#ea5b8f;--ad:#a8305f;--al:#ffe6ef;--ab:#f9bcd2;--pt:#fff5f9;--rgb:226,88,143;--g:linear-gradient(150deg,#f58fb4 0%,#ea5b8f 55%,#d9457d 100%);--gb:linear-gradient(135deg,#f06fa0,#d9457d);--bg:linear-gradient(180deg,#ffe3ed 0,#fff5f9 380px) #fff5f9;--tx:#3b1a2a;--mu:#9c7388;--ln:#fbe1ea}
 [hidden]{display:none!important}
-*{box-sizing:border-box;-webkit-tap-highlight-color:transparent;touch-action:manipulation}
-body{margin:0;font:15px/1.45 "Plus Jakarta Sans",-apple-system,system-ui,sans-serif;color:var(--tx);background:var(--bg) no-repeat;min-height:100vh}
-#app{max-width:560px;margin:auto;padding:calc(env(safe-area-inset-top) + 18px) 16px calc(170px + env(safe-area-inset-bottom))}
-h2{font-size:22px;margin:6px 0 12px;letter-spacing:-.3px}h3{font-size:20px;margin:20px 0 10px;letter-spacing:-.3px}h4{font-size:16px;margin:0 0 6px}
-small,.mu{color:var(--mu)}.in{color:var(--in)}.out{color:var(--out)}
-.hi{margin:4px 0 16px}.hi small{display:block;font-size:16px}.hi b{font-size:30px;font-weight:800;letter-spacing:-.8px}
-.glass{background:rgba(255,255,255,.88);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-radius:26px;padding:16px;margin-bottom:12px;box-shadow:var(--sh)}
-.glass b{display:block;font-size:19px;margin-top:2px;font-weight:800}
-.hero{position:relative;overflow:hidden;background:var(--g);color:#fff;padding:22px;border-radius:30px;box-shadow:0 16px 36px rgba(var(--rgb),.35),0 4px 0 var(--ad)}
-.hero small{color:#eceaff;font-size:15px}.hero>*{position:relative;z-index:1}
-.hero::after{content:"";position:absolute;right:-50px;bottom:-90px;width:210px;height:210px;border-radius:50%;background:rgba(255,255,255,.18)}
-.hero::before{content:"";position:absolute;right:70px;top:-60px;width:120px;height:120px;border-radius:50%;background:rgba(255,255,255,.12)}
-.bal{display:flex;align-items:center;gap:10px;margin:6px 0 8px}.bal b{font-size:34px;letter-spacing:-1px;margin:0}
-.eye{width:42px;height:34px;border:0;border-radius:14px;background:rgba(255,255,255,.3);font-size:17px}
-.av{position:absolute!important;top:20px;right:20px;width:52px;height:52px;border-radius:50%;background:#fff;color:var(--a);border:3px solid var(--ab);display:grid;place-items:center;font-weight:800;font-size:20px}
-.tabs{display:flex;background:rgba(255,255,255,.92);border-radius:999px;padding:6px;box-shadow:var(--sh);margin:16px 0}
-.tabs button{flex:1;border:0;background:none;padding:12px 2px;border-radius:999px;font:inherit;font-size:14px;font-weight:700;color:var(--a);min-height:46px}
-.tabs .on{background:var(--gb);color:#fff;box-shadow:0 6px 14px rgba(var(--rgb),.35)}
-.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:12px}.g3 .glass{margin:0;padding:14px 12px}.g3 small{display:block;font-size:13px;min-height:36px}.g3 b{font-size:15px;overflow-wrap:anywhere}
-.ins{display:flex;gap:14px;align-items:center}.ins i{font-style:normal;font-size:26px;width:54px;height:54px;border-radius:18px;background:var(--al);display:grid;place-items:center;flex:none}
+html{-webkit-text-size-adjust:100%;overscroll-behavior-y:none}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent;touch-action:pan-x pan-y}
+body{margin:0;font:400 16px/1.5 "Plus Jakarta Sans",-apple-system,"SF Pro Text",system-ui,sans-serif;color:var(--tx);background:var(--bg);background-repeat:no-repeat;min-height:100vh;-webkit-font-smoothing:antialiased;font-variant-numeric:tabular-nums}
+#app{max-width:520px;margin:auto;padding:calc(env(safe-area-inset-top) + 20px) 18px calc(130px + env(safe-area-inset-bottom))}
+.pgm #app{padding-bottom:0}
+h2{font-size:24px;line-height:1.2;margin:4px 0 14px;font-weight:800;letter-spacing:-.02em}
+h3{font-size:18px;font-weight:700;margin:24px 0 12px;letter-spacing:-.01em}
+h4{font-size:15px;font-weight:700;margin:0 0 8px}
+small{font-size:13px;color:var(--mu);font-weight:500;line-height:1.4}.mu{color:var(--mu)}.in{color:var(--in)}.out{color:var(--out)}
+.hi{margin:2px 0 18px}.hi small{display:block;font-size:14px}.hi b{font-size:28px;font-weight:800;letter-spacing:-.03em}
+.glass{background:#fff;border-radius:22px;padding:16px;margin-bottom:12px;box-shadow:0 1px 2px rgba(var(--rgb),.06),0 10px 28px -10px rgba(var(--rgb),.18)}
+.glass b{display:block;font-size:18px;font-weight:800;letter-spacing:-.01em;margin-top:2px}
+.hero{position:relative;overflow:hidden;background:var(--g);color:#fff;border-radius:28px;padding:22px;box-shadow:0 20px 40px -14px rgba(var(--rgb),.6)}
+.hero::before{content:"";position:absolute;right:-60px;top:-80px;width:230px;height:230px;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.26),rgba(255,255,255,0) 70%)}
+.hero::after{content:"";position:absolute;left:-50px;bottom:-100px;width:210px;height:210px;border-radius:50%;border:1.5px solid rgba(255,255,255,.18)}
+.hero>*{position:relative;z-index:1}.hero small{color:rgba(255,255,255,.85);font-size:13px;font-weight:600;letter-spacing:.02em}
+.bal{display:flex;align-items:center;gap:10px;margin:6px 0 14px}.bal b{font-size:34px;line-height:1.1;font-weight:800;letter-spacing:-.03em;margin:0}
+.eye{display:grid;place-items:center;width:36px;height:30px;border:0;border-radius:12px;background:rgba(255,255,255,.2);color:#fff}
+.av{position:absolute!important;top:18px;right:18px;width:42px;height:42px;border-radius:50%;background:rgba(255,255,255,.2);border:1.5px solid rgba(255,255,255,.5);color:#fff;display:grid;place-items:center;font-weight:800;font-size:17px}
+.mini{display:flex;gap:8px;flex-wrap:wrap}.mp{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.24);border-radius:999px;padding:6px 11px;font-size:12.5px;font-weight:700}
+.pill{margin-top:14px;border:0;border-radius:999px;background:#fff;color:var(--a);padding:9px 14px;font:inherit;font-size:13px;font-weight:700;display:inline-flex;gap:6px;align-items:center;min-height:38px}
+.tabs{display:flex;background:#fff;border-radius:999px;padding:5px;margin:18px 0;box-shadow:0 1px 2px rgba(var(--rgb),.06),0 8px 20px -10px rgba(var(--rgb),.28)}
+.tabs button{flex:1;border:0;background:none;padding:11px 2px;border-radius:999px;font:inherit;font-size:13.5px;font-weight:700;color:var(--mu);min-height:42px}
+.tabs .on{background:var(--gb);color:#fff;box-shadow:0 6px 14px -4px rgba(var(--rgb),.55)}
+.g3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-bottom:12px}.g3 .glass{margin:0;padding:14px 12px;border-radius:20px}.g3 small{display:block;min-height:34px;font-size:12px}.g3 b{font-size:15px;overflow-wrap:anywhere}
+.c1{background:var(--okb)!important}.c2{background:var(--nob)!important}.c3{background:var(--al)!important}
+.tile{display:grid;place-items:center;width:46px;height:46px;border-radius:14px;background:var(--al);font-size:22px;line-height:1;flex:none}
+.tile .cj{width:26px;height:26px}.mp .cj{width:15px;height:15px}.cj{width:1.15em;height:1.15em;vertical-align:-.2em}
+.item{display:flex;align-items:center;gap:12px;padding:12px 14px;cursor:pointer}.item b{margin:0;white-space:nowrap;font-size:15px}
+.ins{display:flex;gap:14px;align-items:center}
+.st{display:flex;gap:14px;align-items:center;padding:16px;background:var(--al)}.st b{font-size:17px}.st .tile{background:#fff;font-size:26px;width:52px;height:52px;border-radius:16px}
+.st.ok{background:var(--okb)}.st.bad{background:var(--nob)}
+.kc{display:flex;align-items:center;gap:14px;cursor:pointer;padding:16px}.kc .tile{width:56px;height:56px;border-radius:18px;font-size:28px}.kc .tile .cj{width:32px;height:32px}.kc .info{flex:1;min-width:0}.kc b{font-size:22px}.kc .pc{font-size:13px;font-weight:700;color:var(--a);background:var(--al);border-radius:999px;padding:4px 10px}
 .don{display:flex;align-items:center;gap:18px}.don p{margin:6px 0}
-.lnk{background:none;border:0;color:var(--a);font:inherit;font-weight:700;min-height:44px}
 .row{display:flex;gap:10px}.row>*{flex:1;min-width:0}.between{display:flex;justify-content:space-between;gap:8px}
+.lnk{background:none;border:0;color:var(--a);font:inherit;font-weight:700;min-height:44px;padding:0 4px}
 .chips{display:flex;gap:8px;flex-wrap:wrap}
-.chip{border:1.5px solid var(--ln);background:#fff;border-radius:999px;padding:10px 15px;font:inherit;font-weight:600;color:var(--tx);min-height:44px}
-.chip.on{background:var(--gb);color:#fff;border-color:transparent}
-input,select{width:100%;font:inherit;padding:13px;border:1.5px solid var(--ln);border-radius:16px;background:#fff;color:var(--tx);min-height:48px}
-.sel{appearance:none;-webkit-appearance:none;background:#fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='none' stroke='%238a87a8' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M3 6l5 5 5-5'/%3E%3C/svg%3E") no-repeat right 18px center;border:1.5px solid var(--ab);border-radius:22px;padding:15px 46px 15px 20px;font-weight:600;font-size:17px;box-shadow:var(--sh)}
-label{display:block;margin:14px 0 6px;font-size:14px;color:var(--mu)}
-.btn{width:100%;border:0;border-radius:18px;padding:16px;font:inherit;font-weight:700;font-size:17px;color:#fff;background:var(--gb);box-shadow:0 8px 18px rgba(var(--rgb),.35);margin-top:16px;min-height:54px}
+.chip{display:inline-flex;align-items:center;gap:6px;border:1.5px solid var(--ln);background:#fff;border-radius:999px;padding:9px 14px;font:inherit;font-size:14px;font-weight:600;color:var(--tx);min-height:42px}
+.chip.on{background:var(--al);border-color:var(--p);color:var(--a)}
+input,select{width:100%;font:inherit;font-size:16px;padding:13px 14px;border:1.5px solid var(--ln);border-radius:14px;background:#fff;color:var(--tx);min-height:48px}
+input:focus,select:focus{outline:0;border-color:var(--p);box-shadow:0 0 0 4px rgba(var(--rgb),.12)}
+.amt{font-size:30px!important;font-weight:800;text-align:center;letter-spacing:-.02em;padding:16px}
+.sel{-webkit-appearance:none;appearance:none;background:#fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='none' stroke='%236b7499' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M3 6l5 5 5-5'/%3E%3C/svg%3E") no-repeat right 16px center;padding-right:44px;font-weight:600}
+label{display:block;margin:16px 0 8px;font-size:13px;font-weight:600;color:var(--mu)}
+.btn{width:100%;border:0;border-radius:18px;padding:15px;font:inherit;font-size:16px;font-weight:700;color:#fff;background:var(--gb);box-shadow:0 10px 22px -8px rgba(var(--rgb),.6);margin-top:16px;min-height:54px}
 .btn:disabled{opacity:.6}.btn.del{background:#fff;color:var(--out);border:1.5px solid var(--out);box-shadow:none;margin-top:10px}
-.bar{height:9px;background:var(--al);border-radius:9px;overflow:hidden;margin-top:6px}.bar i{display:block;height:100%;background:var(--g);border-radius:9px;transition:width .6s}
-.item{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:14px;cursor:pointer}.item b{margin:0;white-space:nowrap}
-.logo{width:76px;height:76px;border-radius:26px;background:var(--g);color:#fff;font-size:28px;font-weight:800;display:grid;place-items:center;margin:0 auto 14px;box-shadow:0 12px 30px rgba(var(--rgb),.4)}
-nav{position:fixed;left:0;right:0;bottom:0;max-width:560px;margin:auto;display:flex;justify-content:space-around;padding:10px 6px calc(10px + env(safe-area-inset-bottom));background:rgba(255,255,255,.92);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border-radius:28px 28px 0 0;box-shadow:0 -8px 30px rgba(var(--rgb),.12);z-index:6}
-nav button{background:none;border:0;color:var(--mu);font:inherit;font-size:12px;font-weight:600;display:flex;flex-direction:column;align-items:center;gap:3px;min-width:68px;min-height:54px}
-nav .ic{display:grid;place-items:center;width:58px;height:32px;border-radius:16px}
-nav .on{color:var(--a);font-weight:700}nav .on .ic{background:var(--al);box-shadow:inset 0 0 0 1.5px var(--ab)}
-nav svg{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
-.fab{position:fixed;right:max(20px,calc(50% - 260px));bottom:calc(96px + env(safe-area-inset-bottom));width:64px;height:64px;border-radius:50%;border:0;background:var(--gb);color:#fff;font-size:38px;line-height:1;display:grid;place-items:center;box-shadow:0 12px 26px rgba(var(--rgb),.45);z-index:5}
-.ov{position:fixed;inset:0;background:rgba(27,23,64,.35);backdrop-filter:blur(3px);display:flex;align-items:flex-end;justify-content:center;z-index:9;animation:f .2s;overscroll-behavior:contain}
-.sheet{background:#fff;width:100%;max-width:560px;max-height:94%;overflow:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;border-radius:28px 28px 0 0;padding:0 16px;animation:u .28s cubic-bezier(.2,.8,.2,1)}
-.noanim{animation:none!important}
-.hd{position:sticky;top:0;z-index:2;background:#fff;display:flex;justify-content:space-between;align-items:center;padding:14px 0 10px}.hd h2{margin:0;font-size:20px}
-.x{width:44px;height:44px;border-radius:50%;border:0;background:var(--al);font-size:18px;color:var(--tx)}
-.ft{position:sticky;bottom:0;z-index:2;background:#fff;border-top:1px solid var(--ln);margin-top:14px;padding:12px 0 calc(12px + env(safe-area-inset-bottom))}.ft .btn{margin-top:0}.ft .btn+.btn{margin-top:10px}
-@keyframes u{from{transform:translateY(50px);opacity:0}}@keyframes f{from{opacity:0}}
-.sk{height:96px;border-radius:24px;background:linear-gradient(90deg,var(--al) 25%,var(--ln) 50%,var(--al) 75%);background-size:200% 100%;animation:s 1.2s infinite;margin-bottom:12px}@keyframes s{to{background-position:-200% 0}}
-.toast{position:fixed;top:calc(env(safe-area-inset-top) + 10px);left:50%;transform:translateX(-50%);padding:12px 18px;border-radius:16px;color:#fff;z-index:99;font-weight:700;max-width:90%;text-align:center;animation:f .2s}
-svg.i{fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round;flex:none}
-.chip{display:inline-flex;align-items:center;gap:7px}.chip svg{width:18px;height:18px}
-.tile{display:grid;place-items:center;width:46px;height:46px;border-radius:15px;background:var(--al);color:var(--a);flex:none}
-.pill{margin-top:12px;border:0;border-radius:999px;background:rgba(255,255,255,.28);color:#fff;padding:9px 14px;font:inherit;font-weight:700;font-size:13px;display:inline-flex;gap:6px;align-items:center;min-height:40px}
-.eye{display:grid;place-items:center}
-.st{display:flex;gap:14px;align-items:center;padding:18px;background:var(--al)}.st b{font-size:18px}
-.st.ok{background:linear-gradient(135deg,#e6faf2,#cdf4e3)}.st.ok .tile{background:var(--in);color:#fff}
-.st.bad{background:linear-gradient(135deg,#fff0f3,#ffd9e1)}.st.bad .tile{background:var(--out);color:#fff}
-.tile{font-size:24px;line-height:1}.st .tile{font-size:30px}.em{font-size:20px;line-height:1}
-.c1{background:linear-gradient(135deg,#d9fbe9,#aeeccb)}.c2{background:linear-gradient(135deg,#ffe3ea,#ffbccb)}.c3{background:linear-gradient(135deg,var(--al),#fff)}
-.mini{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}.mp{background:rgba(255,255,255,.25);border-radius:999px;padding:6px 11px;font-size:12px;font-weight:700}
-.kc{display:flex;align-items:center;gap:16px;color:#fff;cursor:pointer;padding:20px;box-shadow:0 12px 26px rgba(0,0,0,.14)}.kc small{color:rgba(255,255,255,.92)}.kc .big{font-size:46px;line-height:1;filter:drop-shadow(0 4px 6px rgba(0,0,0,.2))}.kc b{font-size:26px}
-@keyframes pop{from{opacity:0;transform:translateY(16px) scale(.97)}}
-#v>*{animation:pop .5s cubic-bezier(.2,.9,.3,1.15) both}#v>:nth-child(2){animation-delay:.05s}#v>:nth-child(3){animation-delay:.1s}#v>:nth-child(4){animation-delay:.15s}#v>:nth-child(5){animation-delay:.2s}#v>:nth-child(n+6){animation-delay:.25s}#v>.sk{animation:s 1.2s infinite}
-@keyframes pulse{0%{box-shadow:0 12px 26px rgba(var(--rgb),.45),0 0 0 0 rgba(var(--rgb),.4)}70%,100%{box-shadow:0 12px 26px rgba(var(--rgb),.45),0 0 0 20px rgba(var(--rgb),0)}}
-.fab{animation:pulse 2.2s infinite}nav .ic{font-size:21px}nav .on .ic{transform:translateY(-2px) scale(1.12)}.chip{font-weight:700}
+.bar{height:8px;background:var(--al);border-radius:8px;overflow:hidden;margin-top:6px}.bar i{display:block;height:100%;background:var(--gb);border-radius:8px;transition:width .5s}
+.logo{width:72px;height:72px;border-radius:22px;background:var(--g);color:#fff;font-size:26px;font-weight:800;letter-spacing:-.04em;display:grid;place-items:center;margin:0 auto 16px;box-shadow:0 14px 28px -8px rgba(var(--rgb),.6)}
+svg.i{fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;flex:none}
+nav{position:fixed;left:0;right:0;bottom:0;max-width:520px;margin:auto;display:flex;justify-content:space-around;padding:8px 8px calc(8px + env(safe-area-inset-bottom));background:rgba(255,255,255,.94);-webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px);border-radius:26px 26px 0 0;box-shadow:0 -1px 0 var(--ln),0 -12px 30px -12px rgba(var(--rgb),.22);z-index:6}
+nav button{background:none;border:0;color:var(--mu);font:inherit;font-size:11px;font-weight:600;display:flex;flex-direction:column;align-items:center;gap:3px;min-width:64px;min-height:52px}
+nav .ic{display:grid;place-items:center;width:52px;height:30px;border-radius:15px}nav .on{color:var(--a)}nav .on .ic{background:var(--al)}
+nav svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+.fab{position:fixed;right:max(20px,calc(50% - 240px));bottom:calc(92px + env(safe-area-inset-bottom));width:58px;height:58px;border-radius:20px;border:0;background:var(--gb);display:grid;place-items:center;box-shadow:0 14px 28px -8px rgba(var(--rgb),.7);z-index:5}
+.fab svg{width:26px;height:26px;fill:none;stroke:#fff;stroke-width:2.4;stroke-linecap:round}
+.pg{display:flex;align-items:center;gap:12px;margin-bottom:16px}.pg h2{margin:0;flex:1;font-size:21px}
+.x{width:42px;height:42px;border-radius:14px;border:0;background:#fff;color:var(--tx);display:grid;place-items:center;flex:none;box-shadow:0 1px 2px rgba(var(--rgb),.08),0 6px 14px -6px rgba(var(--rgb),.3)}
+.ft{position:sticky;bottom:0;margin:22px -18px 0;padding:12px 18px calc(12px + env(safe-area-inset-bottom));background:rgba(255,255,255,.94);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);border-top:1px solid var(--ln)}.ft .btn{margin-top:0}.ft .btn+.btn{margin-top:10px}
+@keyframes f{from{opacity:0}}#v>*{animation:f .3s both}#v>.sk{animation:s 1.2s infinite}
+.sk{height:96px;border-radius:22px;background:linear-gradient(90deg,var(--al) 25%,var(--pt) 50%,var(--al) 75%);background-size:200% 100%;margin-bottom:12px}@keyframes s{to{background-position:-200% 0}}
+.toast{position:fixed;top:calc(env(safe-area-inset-top) + 12px);left:50%;transform:translateX(-50%);padding:12px 18px;border-radius:16px;color:#fff;z-index:99;font-weight:600;font-size:14px;max-width:90%;text-align:center;box-shadow:0 10px 24px -8px rgba(0,0,0,.35);animation:f .2s}
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 </style></head>
 <body>
 <div id="app"><div id="v"></div></div>
 <nav id="nv" hidden></nav>
-<button id="fab" class="fab" onclick="openForm()" aria-label="Tambah transaksi" hidden>+</button>
+<button id="fab" class="fab" onclick="openForm()" aria-label="Tambah transaksi" hidden><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></button>
 <div id="ov"></div>
 <script>
 /* ===== KONFIGURASI ===== */
@@ -112,7 +109,7 @@ async function api(act, extra = {}) {
 function toast(m, ok = 1, ms = 2600) {
   document.querySelectorAll('.toast').forEach(t => t.remove());
   const t = document.createElement('div');
-  t.className = 'toast'; t.textContent = m; t.style.background = ok ? '#10b981' : '#f43f5e';
+  t.className = 'toast'; t.textContent = m; t.style.background = ok ? '#0f9f6e' : '#e04462';
   document.body.appendChild(t); setTimeout(() => t.remove(), ms);
 }
 
@@ -120,7 +117,7 @@ function toast(m, ok = 1, ms = 2600) {
 function loginView() {
   document.documentElement.dataset.th = LU == 'Risa' ? 'pink' : 'navy';
   $('#nv').hidden = true; $('#fab').hidden = true;
-  $('#v').innerHTML = `<div style="padding-top:12vh;text-align:center"><div class="logo">💰</div><h2>Keuangan Keluarga</h2><p class="mu">Pilih nama, lalu masukkan PIN</p>
+  $('#v').innerHTML = `<div style="padding-top:12vh;text-align:center"><div class="logo">Rp</div><h2>Keuangan Keluarga</h2><p class="mu">Pilih nama, lalu masukkan PIN</p>
   <div class="chips" style="justify-content:center">${NAMA.map(n => `<button class="chip ${n == LU ? 'on' : ''}" onclick="LU='${n}';loginView()">${n}</button>`).join('')}</div>
   <input id="pin" type="password" inputmode="numeric" placeholder="PIN" style="margin:16px 0 0;text-align:center"><button class="btn" onclick="doLogin()">Masuk</button></div>`;
 }
@@ -136,9 +133,9 @@ const I = {
   cog: '<circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M19 5l-2 2M7 17l-2 2"/>'
 };
 function shell() {
-  const b = (t, l, e) => `<button class="${S.tab == t ? 'on' : ''}" onclick="go('${t}')"><span class="ic">${e}</span>${l}</button>`;
+  const b = (t, l, i) => `<button class="${S.tab == t ? 'on' : ''}" onclick="go('${t}')"><span class="ic"><svg viewBox="0 0 24 24">${I[i]}</svg></span>${l}</button>`;
   $('#nv').hidden = false; $('#fab').hidden = false;
-  $('#nv').innerHTML = b('home', 'Beranda', '🏠') + b('hist', 'Riwayat', '🧾') + b('log', 'Log', '🕘') + b('set', 'Setelan', '⚙️');
+  $('#nv').innerHTML = b('home', 'Beranda', 'home') + b('hist', 'Riwayat', 'list') + b('log', 'Aktivitas', 'log') + b('set', 'Setelan', 'cog');
 }
 function go(t) { S.tab = t; shell(); render(); scrollTo(0, 0); }
 async function boot() { applyTh(); if (S.user && S.pin) { shell(); load(); } else loginView(); }
@@ -151,7 +148,7 @@ async function load(silent) {
   }
 }
 function render() {
-  if (!S.data) return;
+  if (!S.data || $('#v').dataset.pg) return;
   const v = $('#v');
   if (S.tab == 'home') v.innerHTML = home();
   else if (S.tab == 'hist') { v.innerHTML = hist(); hl(); }
@@ -180,11 +177,11 @@ function trend(a, f, e, days) {
   const K = Object.keys(B).sort(), mx = Math.max(1, ...K.map(k => Math.max(...B[k]))), w = 300 / K.length;
   return `<svg viewBox="0 0 300 112" width="100%">` + K.map((k, i) => {
     const h1 = B[k][0] / mx * 95, h2 = B[k][1] / mx * 95;
-    return `<rect x="${i * w + w * .08}" y="${100 - h1}" width="${w * .4}" height="${h1}" rx="2" fill="#10b981"/><rect x="${i * w + w * .5}" y="${100 - h2}" width="${w * .4}" height="${h2}" rx="2" fill="#f43f5e"/>`;
+    return `<rect x="${i * w + w * .08}" y="${100 - h1}" width="${w * .4}" height="${h1}" rx="2" fill="#0f9f6e"/><rect x="${i * w + w * .5}" y="${100 - h2}" width="${w * .4}" height="${h2}" rx="2" fill="#e04462"/>`;
   }).join('') + `<text x="0" y="111" font-size="9" fill="#7a819c">${K[0].slice(5)}</text><text x="300" y="111" font-size="9" fill="#7a819c" text-anchor="end">${K[K.length - 1].slice(5)}</text></svg>`;
 }
-const itm = x => `<div class="glass item" onclick="openForm('${x.t}','${x.id}')"><span class="tile" style="background:${tc(x.kat)}">${em(x.kat)}</span><div style="flex:1;min-width:0"><b style="font-size:16px">${esc(x.kat)}</b><small>${x.tgl} · ${esc(x.met)} · ${em(x.kt)} ${esc(x.kt)} · ${esc(x.oleh)}${x.cat ? ' · ' + esc(x.cat) : ''}</small></div><b class="${x.t == 'masuk' ? 'in' : 'out'}">${x.t == 'masuk' ? '+' : '−'}${rp(x.nom)}</b></div>`;
-const donut = (m, k) => { const c = 2 * Math.PI * 40, T = m + k || 1; return `<svg viewBox="0 0 100 100" width="124" height="124" style="flex:none"><circle cx="50" cy="50" r="40" fill="none" stroke="#ef5a78" stroke-width="15"/><circle cx="50" cy="50" r="40" fill="none" stroke="#12a874" stroke-width="15" stroke-dasharray="${m / T * c} ${c}" transform="rotate(-90 50 50)"/></svg>`; };
+const itm = x => `<div class="glass item" onclick="openForm('${x.t}','${x.id}')"><span class="tile">${em(x.kat)}</span><div style="flex:1;min-width:0"><b style="font-size:16px">${esc(x.kat)}</b><small>${x.tgl} · ${esc(x.met)} · ${em(x.kt)} ${esc(x.kt)} · ${esc(x.oleh)}${x.cat ? ' · ' + esc(x.cat) : ''}</small></div><b class="${x.t == 'masuk' ? 'in' : 'out'}">${x.t == 'masuk' ? '+' : '−'}${rp(x.nom)}</b></div>`;
+const donut = (m, k) => { const c = 2 * Math.PI * 40, T = m + k || 1; return `<svg viewBox="0 0 100 100" width="124" height="124" style="flex:none"><circle cx="50" cy="50" r="40" fill="none" stroke="#e04462" stroke-width="15"/><circle cx="50" cy="50" r="40" fill="none" stroke="#0f9f6e" stroke-width="15" stroke-dasharray="${m / T * c} ${c}" transform="rotate(-90 50 50)"/></svg>`; };
 function eye() { localStorage.h = localStorage.h == '1' ? '0' : '1'; render(); }
 function perSel() {
   return `<select class="sel" onchange="per(this.value)">${[['hari', 'Hari ini'], ['minggu', 'Minggu ini'], ['bulan', 'Bulan ini'], ['custom', 'Custom']].map(([k, l]) => `<option value="${k}" ${S.per == k ? 'selected' : ''}>${l}</option>`).join('')}</select>`
@@ -198,15 +195,15 @@ function home() {
   const ks = {}; a.filter(x => x.t == 'keluar' && inR(x, f, e)).forEach(x => ks[x.kat] = (ks[x.kat] || 0) + x.nom);
   const kl = Object.entries(ks).sort((p, q) => q[1] - p[1]), mx = kl[0] ? kl[0][1] : 1, none = !a.some(x => inR(x, f, e));
   const nodata = `<div class="glass" style="margin-top:12px">${empty('Belum ada data di periode ini.<br>Ketuk tombol + untuk mencatat.')}</div>`;
-  const head = `<div class="hi"><small>Halo, semangat catat keuangan ✨</small><b>${esc(S.user)} 👋</b></div>
+  const head = `<div class="hi"><small>Selamat datang kembali</small><b>${esc(S.user)}</b></div>
   <div class="glass hero"><div class="av">${esc(S.user[0])}</div><small>Saldo keseluruhan</small><div class="bal"><b>${R(saldo)}</b><button class="eye" onclick="eye()" aria-label="Sembunyikan atau tampilkan saldo">${ic(hide ? 'eyeoff' : 'eye', 20)}</button></div><div class="mini">${KT.map(k => `<span class="mp">${em(k)} ${R(kb(k))}</span>`).join('')}</div><button class="pill" onclick="openAdj()">${ic('sync', 16)} Sesuaikan saldo</button></div>
   <div class="tabs">${[['ring', 'Ringkasan'], ['kan', 'Kantong'], ['stat', 'Statistik'], ['ins', 'Insight']].map(([x, l]) => `<button class="${sub == x ? 'on' : ''}" onclick="S.sub='${x}';render()">${l}</button>`).join('')}</div>`;
   let body;
   if (sub == 'ring') {
     const rec = a.slice().sort((p, q) => q.tgl.localeCompare(p.tgl)).slice(0, 4);
-    body = `<div class="g3"><div class="glass c1"><small>🤑 Masuk hari ini</small><b class="in">${R(mt)}</b></div><div class="glass c2"><small>💸 Keluar hari ini</small><b class="out">${R(kt)}</b></div><div class="glass c3"><small>⚖️ Selisih hari ini</small><b style="color:var(--a)">${R(mt - kt)}</b></div></div>
+    body = `<div class="g3"><div class="glass c1"><small>Masuk hari ini</small><b class="in">${R(mt)}</b></div><div class="glass c2"><small>Keluar hari ini</small><b class="out">${R(kt)}</b></div><div class="glass c3"><small>Selisih hari ini</small><b style="color:var(--a)">${R(mt - kt)}</b></div></div>
     <h3>Laporan</h3>${perSel()}
-    <div class="g3" style="margin-top:12px"><div class="glass c1"><small>📥 Pemasukan</small><b class="in">${R(m)}</b></div><div class="glass c2"><small>📤 Pengeluaran</small><b class="out">${R(k)}</b></div><div class="glass c3"><small>✨ Bersih</small><b style="color:var(--a)">${R(m - k)}</b></div></div>
+    <div class="g3" style="margin-top:12px"><div class="glass c1"><small>Pemasukan</small><b class="in">${R(m)}</b></div><div class="glass c2"><small>Pengeluaran</small><b class="out">${R(k)}</b></div><div class="glass c3"><small>Bersih</small><b style="color:var(--a)">${R(m - k)}</b></div></div>
     <div class="between" style="align-items:center;margin-top:8px"><h3 style="margin:0">Transaksi terbaru</h3><button class="lnk" onclick="go('hist')">Lihat semua</button></div>
     ${rec.length ? rec.map(itm).join('') : `<div class="glass">${empty('Belum ada transaksi.<br>Ketuk tombol + untuk mencatat yang pertama.')}</div>`}`;
   } else if (sub == 'kan') {
@@ -261,27 +258,20 @@ function openForm(t = 'keluar', id = null) {
   F = { t, id, kat: x ? x.kat : (localStorage['k' + t] || ''), met: x ? x.met : (localStorage.m || 'Tunai'), nom: x ? dots(x.nom) : '', tgl: x ? x.tgl : iso(new Date()), cat: x ? x.cat : '', kt: x ? x.kt : (localStorage.kt || 'Taktis') };
   formBody();
 }
-function closeForm() { $('#ov').innerHTML = ''; document.body.style.overflow = ''; }
+function closeForm() { delete $('#v').dataset.pg; document.body.classList.remove('pgm'); shell(); render(); scrollTo(0, S.y || 0); }
 function pick(k, el) { F[k] = el.dataset.v; el.parentNode.querySelectorAll('.chip').forEach(b => b.classList.toggle('on', b == el)); }
-function vv() { const o = $('.ov'), v = window.visualViewport; if (o && v) { o.style.height = v.height + 'px'; o.style.top = v.offsetTop + 'px'; } }
-if (window.visualViewport) { visualViewport.addEventListener('resize', vv); visualViewport.addEventListener('scroll', vv); }
 function formBody(re) {
-  const st = $('.sheet') ? $('.sheet').scrollTop : 0;
-  document.body.style.overflow = 'hidden';
   const K = S.data.kat[F.t == 'masuk' ? 'Pemasukan' : 'Pengeluaran'], M = S.data.kat.Metode;
   const ch = (c, cur, key) => `<button class="chip ${c == cur ? 'on' : ''}" data-v="${esc(c)}" onclick="pick('${key}',this)">${em(c)} ${esc(c)}</button>`;
-  $('#ov').innerHTML = `<div class="ov ${re ? 'noanim' : ''}" onclick="if(event.target==this)closeForm()"><div class="sheet ${re ? 'noanim' : ''}">
-  <div class="hd"><h2>${F.id ? 'Edit transaksi' : 'Catat transaksi'}</h2><button class="x" onclick="closeForm()" aria-label="Tutup">${ic('x', 20)}</button></div>
-  ${F.id ? '' : `<div class="row" style="margin-bottom:14px">${[['keluar', 'Pengeluaran'], ['masuk', 'Pemasukan']].map(([k, l]) => `<button class="chip ${F.t == k ? 'on' : ''}" onclick="F.t='${k}';F.kat=localStorage['k${k}']||'';formBody(true)">${l}</button>`).join('')}</div>`}
-  <input id="fn" inputmode="numeric" placeholder="Rp 0" value="${F.nom}" oninput="this.value=dots(this.value);F.nom=this.value" style="font-size:28px;font-weight:700;text-align:center">
+  sheetUI(F.id ? 'Edit transaksi' : 'Catat transaksi', `${F.id ? '' : `<div class="row" style="margin-bottom:14px">${[['keluar', 'Pengeluaran'], ['masuk', 'Pemasukan']].map(([k, l]) => `<button class="chip ${F.t == k ? 'on' : ''}" style="justify-content:center" onclick="F.t='${k}';F.kat=localStorage['k${k}']||'';formBody(true)">${l}</button>`).join('')}</div>`}
+  <input id="fn" class="amt" inputmode="numeric" placeholder="Rp 0" value="${F.nom}" oninput="this.value=dots(this.value);F.nom=this.value">
   <label>Kategori</label><div class="chips">${K.map(c => ch(c, F.kat, 'kat')).join('')}</div>
   <label>Metode pembayaran</label><div class="chips">${M.map(c => ch(c, F.met, 'met')).join('')}</div>
   <label>Kantong</label><div class="chips">${KT.map(c => ch(c, F.kt, 'kt')).join('')}</div>
   <label>Tanggal</label><input type="date" value="${F.tgl}" onchange="F.tgl=this.value">
   <label>Catatan (opsional)</label><input value="${esc(F.cat)}" oninput="F.cat=this.value" placeholder="Contoh: beli beras">
-  <button class="chip" style="width:100%;margin-top:14px" onclick="$('#sc').click()">${ic('scan', 18)}Scan struk / nota</button><input id="sc" type="file" accept="image/*" hidden onchange="scan(this.files[0])">
-  <div class="ft"><button class="btn" id="sv" onclick="save()">Simpan</button>${F.id ? `<button class="btn del" onclick="del()">Hapus transaksi</button>` : ''}</div></div></div>`;
-  $('.sheet').scrollTop = st; vv();
+  <button class="chip" style="width:100%;justify-content:center;margin-top:16px" onclick="$('#sc').click()">${ic('scan', 18)} Scan struk / nota</button><input id="sc" type="file" accept="image/*" hidden onchange="scan(this.files[0])">`,
+  `<button class="btn" id="sv" onclick="save()">Simpan</button>${F.id ? `<button class="btn del" onclick="del()">Hapus transaksi</button>` : ''}`, re);
 }
 async function save() {
   const nom = +String(F.nom).replace(/\./g, '');
@@ -332,7 +322,7 @@ async function scan(f) {
 }
 /* ===== TEMA, IKON, KANTONG, PENYESUAIAN SALDO ===== */
 const theme = () => localStorage['th_' + S.user] || (S.user == 'Risa' ? 'pink' : 'navy');
-function applyTh() { const t = theme(); document.documentElement.dataset.th = t; const m = document.querySelector('meta[name=theme-color]'); if (m) m.content = t == 'pink' ? '#ffe1ee' : '#d6e0f6'; }
+function applyTh() { const t = theme(); document.documentElement.dataset.th = t; const m = document.querySelector('meta[name=theme-color]'); if (m) m.content = t == 'pink' ? '#ffe3ed' : '#e2e8ff'; }
 function setTh(t) { localStorage['th_' + S.user] = t; applyTh(); render(); }
 const P = {
   food: '<path d="M5 3v5a2 2 0 0 0 4 0V3M7 3v18M17 21V3c-2.2 1.2-3.5 3.8-3.5 7 0 1.6.9 2.5 2.2 2.8H17"/>',
@@ -367,13 +357,15 @@ const P = {
   up: '<path d="M3 17l6-6 4 4 8-8M15 7h6v6"/>',
   down: '<path d="M3 7l6 6 4-4 8 8M15 17h6v-6"/>',
   x: '<path d="M6 6l12 12M18 6L6 18"/>',
+  back: '<path d="M15 5l-7 7 7 7"/>',
   scan: '<path d="M4 8V6a2 2 0 0 1 2-2h2M16 4h2a2 2 0 0 1 2 2v2M20 16v2a2 2 0 0 1-2 2h-2M8 20H6a2 2 0 0 1-2-2v-2M4 12h16"/>',
   sync: '<path d="M20 11a8 8 0 0 0-14.5-4.5L4 8M4 4v4h4M4 13a8 8 0 0 0 14.5 4.5L20 16M20 20v-4h-4"/>',
   eye: '<path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/>',
   eyeoff: '<path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12zM3 3l18 18"/>'
 };
 const EM = { 'Makan & Minum': '🍜', 'Transportasi': '🛵', 'Belanja Harian': '🛒', 'Tagihan Air': '💧', 'Tagihan Wifi': '📶', 'Token Listrik': '⚡', 'Iuran Sampah': '🗑️', 'Kuota Internet': '📱', 'Cicilan': '💳', 'Kesehatan': '💊', 'Pendidikan': '🎓', 'Hiburan': '🎬', 'Sedekah/Donasi': '🤲', 'Biaya Admin Bank': '🏦', 'Lainnya': '✨', 'Gaji': '💰', 'Bonus/Tunjangan': '🌟', 'Usaha Sampingan': '💼', 'Hadiah': '🎁', 'Bunga Bank': '📈', 'Tunai': '💵', 'Transfer': '🔄', 'E-Wallet': '👛', 'Kartu': '💳', 'QRIS': '📲', 'Tabungan': '🐷', 'Darurat': '🚨', 'Taktis': '🎯' };
-const em = n => EM[n] || '✨';
+const CJ = '<svg class="cj" viewBox="0 0 32 32"><ellipse cx="16" cy="28.4" rx="9.5" ry="1.8" fill="#000" opacity=".1"/><path d="M8.5 12.5C5.8 14.6 4 17.8 4 21.4 4 26 9 29 16 29s12-3 12-7.6c0-3.6-1.800-6.800-4.500-8.900z" fill="#F29A52"/><path d="M5.200 19.500c2.800 1.600 6.600 2.300 10.800 2.300s8-.7 10.800-2.300" fill="none" stroke="#C85F23" stroke-width="1.200" opacity=".55"/><ellipse cx="10.800" cy="20" rx="1.900" ry="4.200" fill="#fff" opacity=".3" transform="rotate(14 10.800 20)"/><rect x="9.500" y="9.200" width="13" height="4.600" rx="2.300" fill="#D8692A"/><rect x="12.500" y="10.700" width="7" height="1.600" rx=".8" fill="#6E2E12"/><circle cx="16" cy="5" r="3.500" fill="#FFD369" stroke="#F0B43A" stroke-width="1"/><circle cx="16" cy="5" r="1.500" fill="none" stroke="#F0B43A" stroke-width=".8"/></svg>';
+const em = n => n == 'Tabungan' ? CJ : (EM[n] || '✨');
 const TCS = ['#ffe0e6', '#ffe9d0', '#fff3b8', '#d4f7e0', '#d0f1fb', '#dbe6ff', '#eadcff', '#ffd9f0'];
 const tc = n => TCS[[...String(n)].reduce((h, c) => h + c.charCodeAt(0), 0) % 8];
 const ic = (n, z = 20) => `<svg class="i" viewBox="0 0 24 24" width="${z}" height="${z}">${P[n] || P.dots}</svg>`;
@@ -385,25 +377,26 @@ const PN = () => S.data.pindah || [];
 const kb = kt => ((S.data.saldoAwal || {})[kt] || 0) + all().filter(x => x.kt == kt).reduce((s, x) => s + (x.t == 'masuk' ? x.nom : -x.nom), 0) + PN().reduce((s, x) => s + (x.ke == kt ? x.jml : 0) - (x.dari == kt ? x.jml : 0), 0);
 const kTot = () => KT.reduce((s, k) => s + kb(k), 0);
 const totalSaldo = () => { const a = all(); return KT.reduce((s, k) => s + ((S.data.saldoAwal || {})[k] || 0), 0) + tot(a, 'masuk', '0', '9') - tot(a, 'keluar', '0', '9'); };
-function sheetUI(title, inner, foot) {
-  const re = $('.sheet') ? 'noanim' : '';
-  document.body.style.overflow = 'hidden';
-  $('#ov').innerHTML = `<div class="ov ${re}" onclick="if(event.target==this)closeForm()"><div class="sheet ${re}"><div class="hd"><h2>${title}</h2><button class="x" onclick="closeForm()" aria-label="Tutup">${ic('x', 20)}</button></div>${inner}<div class="ft">${foot}</div></div></div>`;
-  vv();
+function sheetUI(title, inner, foot, keep) {
+  const y = keep ? scrollY : 0;
+  if (!$('#v').dataset.pg) S.y = scrollY;
+  $('#v').dataset.pg = '1'; document.body.classList.add('pgm'); $('#nv').hidden = true; $('#fab').hidden = true;
+  $('#v').innerHTML = `<div class="pg"><button class="x" onclick="closeForm()" aria-label="Kembali">${ic('back', 22)}</button><h2>${title}</h2></div>${inner}<div class="ft">${foot}</div>`;
+  scrollTo(0, y);
 }
 const chipsOf = (key, st) => `<div class="chips">${KT.map(c => `<button class="chip ${st[key] == c ? 'on' : ''}" data-v="${c}" onclick="${st === K ? 'K' : 'A'}.${key}=this.dataset.v;this.parentNode.querySelectorAll('.chip').forEach(b=>b.classList.toggle('on',b==this))">${em(c)} ${c}</button>`).join('')}</div>`;
 function kantongView(R) {
   const tt = totalSaldo();
   return `<div class="row"><div class="glass" style="margin:0"><small>Saldo keseluruhan</small><b>${R(tt)}</b></div><div class="glass" style="margin:0"><small>Saldo total kantong</small><b>${R(kTot())}</b></div></div>
-  <small style="display:block;margin:8px 4px 14px">Jumlah ketiga kantong selalu sama dengan saldo keseluruhan. Ketuk kantong untuk memindahkan dana atau melihat aktivitasnya.</small>`
-    + KT.map(kt => `<div class="glass kc" style="background:${KC[kt]}" onclick="openK('${kt}')"><span class="big">${em(kt)}</span><div><small>Kantong ${kt}</small><b>${R(kb(kt))}</b><small>${tt > 0 ? Math.max(0, Math.round(kb(kt) / tt * 100)) : 0}% dari saldo</small></div></div>`).join('');
+  <p class="mu" style="font-size:13px;margin:10px 2px 14px">Jumlah ketiga kantong selalu sama dengan saldo keseluruhan. Ketuk kantong untuk memindahkan dana atau melihat aktivitasnya.</p>`
+    + KT.map(kt => { const v = kb(kt), p = tt > 0 ? Math.max(0, Math.min(100, Math.round(v / tt * 100))) : 0; return `<div class="glass kc" onclick="openK('${kt}')"><span class="tile">${em(kt)}</span><div class="info"><small>Kantong ${kt}</small><b>${R(v)}</b><div class="bar"><i style="width:${p}%"></i></div></div><span class="pc">${p}%</span></div>`; }).join('');
 }
 let K = {}, A = {};
 function openK(kt) { K = { dari: kt, ke: KT.find(x => x != kt), nom: '', cat: '', tgl: iso(new Date()), kt }; kBody(); }
 function kBody() {
   const kt = K.kt, ev = [...all().filter(x => x.kt == kt).map(x => ({ tgl: x.tgl, id: x.id, t: 'tx', txt: x.kat, e: em(x.kat), oleh: x.oleh, v: x.t == 'masuk' ? x.nom : -x.nom })),
     ...PN().filter(x => x.dari == kt || x.ke == kt).map(x => ({ tgl: x.tgl, id: x.id, t: 'pn', txt: x.dari == kt ? 'Pindah ke ' + x.ke : 'Pindah dari ' + x.dari, e: '🔄', oleh: x.oleh, v: x.ke == kt ? x.jml : -x.jml }))].sort((p, q) => q.tgl.localeCompare(p.tgl)).slice(0, 8);
-  sheetUI(`${em(kt)} Kantong ${kt}`, `<div class="glass kc" style="background:${KC[kt]};margin-bottom:6px"><div><small>Saldo kantong</small><b>${rp(kb(kt))}</b></div></div>
+  sheetUI(`${em(kt)} Kantong ${kt}`, `<div class="glass hero"><small>Saldo kantong ${kt}</small><div class="bal"><b>${rp(kb(kt))}</b></div></div>
   <h4 style="margin-top:14px">Pindahkan dana</h4><label style="margin-top:6px">Dari</label>${chipsOf('dari', K)}<label>Ke</label>${chipsOf('ke', K)}
   <input inputmode="numeric" placeholder="Rp 0" value="${K.nom}" oninput="this.value=dots(this.value);K.nom=this.value" style="margin-top:12px;font-size:26px;font-weight:700;text-align:center">
   <label>Catatan (opsional)</label><input value="${esc(K.cat)}" oninput="K.cat=this.value">
@@ -440,5 +433,6 @@ async function doAdj() {
   catch (e) { toast(e.message, 0); }
 }
 
+['gesturestart', 'gesturechange', 'gestureend'].forEach(t => document.addEventListener(t, e => e.preventDefault()));
 boot();
 </script></body></html>
