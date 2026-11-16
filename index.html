@@ -10,7 +10,7 @@
 <title>Keuangan Keluarga</title>
 <style>
 :root{--a:#4f6bff;--g:linear-gradient(135deg,#4f6bff,#8b5cf6);--tx:#12162b;--mu:#7a819c;--ln:#e9ecf7;--in:#10b981;--out:#f43f5e}
-*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent;touch-action:manipulation}
 body{margin:0;font:16px/1.4 -apple-system,"SF Pro Display",system-ui,sans-serif;color:var(--tx);background:#fff radial-gradient(circle at 95% -5%,#dfe6ff,transparent 40%) fixed;min-height:100vh}
 #app{max-width:560px;margin:auto;padding:calc(env(safe-area-inset-top) + 16px) 16px calc(120px + env(safe-area-inset-bottom))}
 h2{font-size:22px;margin:6px 0 12px;letter-spacing:-.3px}
@@ -34,7 +34,11 @@ nav button{background:none;border:0;color:var(--mu);font-size:11px;display:flex;
 nav button.on{color:var(--a)}nav svg{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
 nav .fab{width:62px;height:62px;border-radius:50%;background:var(--g);color:#fff;margin-top:-30px;font-size:34px;justify-content:center;box-shadow:0 10px 24px rgba(99,102,241,.45)}
 .ov{position:fixed;inset:0;background:rgba(18,22,43,.35);backdrop-filter:blur(3px);display:flex;align-items:flex-end;justify-content:center;z-index:9;animation:f .2s}
-.sheet{background:#fff;width:100%;max-width:560px;max-height:93vh;overflow:auto;border-radius:26px 26px 0 0;padding:18px 16px calc(20px + env(safe-area-inset-bottom));animation:u .28s cubic-bezier(.2,.8,.2,1)}
+.sheet{background:#fff;width:100%;max-width:560px;max-height:94%;overflow:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;border-radius:26px 26px 0 0;padding:0 16px;animation:u .28s cubic-bezier(.2,.8,.2,1)}
+.ov{overscroll-behavior:contain}.noanim{animation:none!important}
+.hd{position:sticky;top:0;z-index:2;background:#fff;display:flex;justify-content:space-between;align-items:center;padding:14px 0 10px}.hd h2{margin:0;font-size:20px}
+.x{width:44px;height:44px;border-radius:50%;border:0;background:#f0f2fa;font-size:18px;color:var(--tx)}
+.ft{position:sticky;bottom:0;z-index:2;background:#fff;border-top:1px solid var(--ln);margin-top:14px;padding:12px 0 calc(12px + env(safe-area-inset-bottom))}.ft .btn{margin-top:0}.ft .btn+.btn{margin-top:10px}
 @keyframes u{from{transform:translateY(50px);opacity:0}}@keyframes f{from{opacity:0}}
 .sk{height:96px;border-radius:20px;background:linear-gradient(90deg,#f0f2fa 25%,#e4e8f6 50%,#f0f2fa 75%);background-size:200% 100%;animation:s 1.2s infinite;margin-bottom:12px}@keyframes s{to{background-position:-200% 0}}
 .toast{position:fixed;top:calc(env(safe-area-inset-top) + 10px);left:50%;transform:translateX(-50%);padding:12px 18px;border-radius:14px;color:#fff;z-index:99;font-weight:600;max-width:90%;text-align:center;animation:f .2s}
@@ -47,7 +51,7 @@ nav .fab{width:62px;height:62px;border-radius:50%;background:var(--g);color:#fff
 <script>
 /* ===== KONFIGURASI ===== */
 const API_URL = 'https://script.google.com/macros/s/AKfycbwu7-tCu-wJbOmb4GdykiUQMnYSlKwfph-izp42URoFm6EzbvfkH-nB4mKE7ueuC2ORxA/exec';
-const NAMA = ['Amar', 'Risa']; // harus sama dengan nama di Code.gs
+const NAMA = ['Suami', 'Istri']; // harus sama dengan nama di Code.gs
 
 const $ = s => document.querySelector(s);
 const rp = n => 'Rp ' + Math.round(n).toLocaleString('id-ID');
@@ -193,19 +197,26 @@ function openForm(t = 'keluar', id = null) {
   F = { t, id, kat: x ? x.kat : (localStorage['k' + t] || ''), met: x ? x.met : (localStorage.m || 'Tunai'), nom: x ? dots(x.nom) : '', tgl: x ? x.tgl : iso(new Date()), cat: x ? x.cat : '' };
   formBody();
 }
-function closeForm() { $('#ov').innerHTML = ''; }
-function formBody() {
+function closeForm() { $('#ov').innerHTML = ''; document.body.style.overflow = ''; }
+function pick(k, el) { F[k] = el.dataset.v; el.parentNode.querySelectorAll('.chip').forEach(b => b.classList.toggle('on', b == el)); }
+function vv() { const o = $('.ov'), v = window.visualViewport; if (o && v) { o.style.height = v.height + 'px'; o.style.top = v.offsetTop + 'px'; } }
+if (window.visualViewport) { visualViewport.addEventListener('resize', vv); visualViewport.addEventListener('scroll', vv); }
+function formBody(re) {
+  const st = $('.sheet') ? $('.sheet').scrollTop : 0;
+  document.body.style.overflow = 'hidden';
   const K = S.data.kat[F.t == 'masuk' ? 'Pemasukan' : 'Pengeluaran'], M = S.data.kat.Metode;
-  const ch = (c, cur, key) => `<button class="chip ${c == cur ? 'on' : ''}" data-v="${esc(c)}" onclick="F.${key}=this.dataset.v;formBody()">${esc(c)}</button>`;
-  $('#ov').innerHTML = `<div class="ov" onclick="if(event.target==this)closeForm()"><div class="sheet">
-  ${F.id ? `<h2>Edit transaksi</h2>` : `<div class="row" style="margin-bottom:14px">${[['keluar', 'Pengeluaran'], ['masuk', 'Pemasukan']].map(([k, l]) => `<button class="chip ${F.t == k ? 'on' : ''}" onclick="F.t='${k}';F.kat=localStorage['k${k}']||'';formBody()">${l}</button>`).join('')}</div>`}
+  const ch = (c, cur, key) => `<button class="chip ${c == cur ? 'on' : ''}" data-v="${esc(c)}" onclick="pick('${key}',this)">${esc(c)}</button>`;
+  $('#ov').innerHTML = `<div class="ov ${re ? 'noanim' : ''}" onclick="if(event.target==this)closeForm()"><div class="sheet ${re ? 'noanim' : ''}">
+  <div class="hd"><h2>${F.id ? 'Edit transaksi' : 'Catat transaksi'}</h2><button class="x" onclick="closeForm()" aria-label="Tutup">✕</button></div>
+  ${F.id ? '' : `<div class="row" style="margin-bottom:14px">${[['keluar', 'Pengeluaran'], ['masuk', 'Pemasukan']].map(([k, l]) => `<button class="chip ${F.t == k ? 'on' : ''}" onclick="F.t='${k}';F.kat=localStorage['k${k}']||'';formBody(true)">${l}</button>`).join('')}</div>`}
   <input id="fn" inputmode="numeric" placeholder="Rp 0" value="${F.nom}" oninput="this.value=dots(this.value);F.nom=this.value" style="font-size:28px;font-weight:700;text-align:center">
   <label>Kategori</label><div class="chips">${K.map(c => ch(c, F.kat, 'kat')).join('')}</div>
   <label>Metode pembayaran</label><div class="chips">${M.map(c => ch(c, F.met, 'met')).join('')}</div>
   <label>Tanggal</label><input type="date" value="${F.tgl}" onchange="F.tgl=this.value">
   <label>Catatan (opsional)</label><input value="${esc(F.cat)}" oninput="F.cat=this.value" placeholder="Contoh: beli beras">
   <button class="chip" style="width:100%;margin-top:14px" onclick="$('#sc').click()">Scan struk / nota</button><input id="sc" type="file" accept="image/*" hidden onchange="scan(this.files[0])">
-  <button class="btn" id="sv" onclick="save()">Simpan</button>${F.id ? `<button class="btn del" onclick="del()">Hapus transaksi</button>` : ''}</div></div>`;
+  <div class="ft"><button class="btn" id="sv" onclick="save()">Simpan</button>${F.id ? `<button class="btn del" onclick="del()">Hapus transaksi</button>` : ''}</div></div></div>`;
+  $('.sheet').scrollTop = st; vv();
 }
 async function save() {
   const nom = +String(F.nom).replace(/\./g, '');
@@ -250,7 +261,7 @@ async function scan(f) {
     if (r.nom) F.nom = dots(r.nom);
     if (r.tgl) F.tgl = r.tgl;
     if (r.cat && !F.cat) F.cat = r.cat;
-    formBody();
+    formBody(true);
     toast(r.nom ? 'Hasil scan terisi. Cek lagi sebelum menyimpan.' : 'Total tidak terbaca. Isi nominal manual.', !!r.nom);
   } catch (e) { toast('Scan gagal. Isi manual saja.', 0); }
 }
